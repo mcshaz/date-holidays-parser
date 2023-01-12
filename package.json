@@ -39,7 +39,9 @@
   },
   "scripts": {
     "all": "npm-run-all clean lint build test",
-    "build": "rollup -c && cp scripts/rollup-fix/* lib",
+    "build": "run-script-os",
+    "build:nix": "rollup -c && cp scripts/rollup-fix/* lib",
+    "build:win32": "rollup -c && copy scripts\\rollup-fix\\* lib",
     "postbuild": "node scripts/postbuild.cjs",
     "ci": "npm-run-all build test",
     "clean": "rimraf lib es coverage .nyc_output",
@@ -49,10 +51,12 @@
     "doc": "jsdox -o docs src/Holidays.js",
     "lint": "eslint --fix --ext .js,.cjs .",
     "prepublishOnly": "npm run all",
-    "test": "npm-run-all test:*",
+    "test": "npm-run-all test:ci test:ts test:tz",
     "test:ci": "mocha",
     "test:ts": "dtslint types",
-    "test:tz": "TZ=UTC-10 mocha && TZ=UTC+10 mocha",
+    "test:tz": "run-script-os",
+    "test:tz:nix": "TZ=UTC-10 mocha && TZ=UTC+10 mocha",
+    "test:tz:win32": "SET TZ=\"UTC-10\" && mocha && SET TZ=\"UTC+10\" && mocha",
     "zuul": "zuul test/Holidays.test.js"
   },
   "mocha": {
@@ -61,7 +65,7 @@
   },
   "dependencies": {
     "astronomia": "^4.1.1",
-    "caldate": "^2.0.4",
+    "caldate": "workspace:*",
     "date-bengali-revised": "^2.0.2",
     "date-chinese": "^2.1.4",
     "date-easter": "^1.0.2",
@@ -71,6 +75,8 @@
   },
   "devDependencies": {
     "c8": "^7.12.0",
+    "date-fns": "^2.29.3",
+    "date-fns-tz": "^1.3.7",
     "dtslint": "^4.2.1",
     "eslint": "^8.28.0",
     "eslint-config-standard": "^17.0.0",
@@ -82,6 +88,7 @@
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
     "rollup": "^2.79.1",
+    "run-script-os": "^1.1.6",
     "serialize-to-module": "^1.1.0",
     "typescript": "^4.9.3"
   },
