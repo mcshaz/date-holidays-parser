@@ -7,7 +7,7 @@ import Equinox from '../src/Equinox.js'
 import Easter from '../src/Easter.js'
 import Hebrew from '../src/Hebrew.js'
 import Hijri from '../src/Hijri.js'
-import CalDate from 'caldate'
+import { CalDate } from 'caldate'
 
 describe('#CalEventFactory', function () {
   it('12-03', function () {

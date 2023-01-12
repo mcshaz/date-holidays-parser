@@ -1,5 +1,5 @@
 import easter from 'date-easter'
-import CalDate from 'caldate'
+import { CalDate } from 'caldate'
 import CalEvent from './CalEvent.js'
 
 export default class Easter extends CalEvent {

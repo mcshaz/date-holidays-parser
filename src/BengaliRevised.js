@@ -1,5 +1,5 @@
 import CalBengali from 'date-bengali-revised'
-import CalDate from 'caldate'
+import { CalDate } from 'caldate'
 import CalEvent from './CalEvent.js'
 
 export default class BengaliRevised extends CalEvent {

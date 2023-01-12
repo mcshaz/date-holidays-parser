@@ -1,5 +1,4 @@
-import { isDate } from './internal/utils.js'
-import CalDate from 'caldate'
+import { CalDate, isDate } from 'caldate'
 
 export default class CalEvent {
   /**

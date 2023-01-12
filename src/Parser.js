@@ -3,7 +3,7 @@
    no-unexpected-multiline: 0
  */
 
-import { toNumber } from './internal/utils.js'
+import { toNumber } from 'caldate'
 
 const WEEKDAYS = 'Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday'.split('|')
 

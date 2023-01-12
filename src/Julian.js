@@ -1,5 +1,5 @@
 import { julian } from 'astronomia'
-import CalDate from 'caldate'
+import { CalDate } from 'caldate'
 import CalEvent from './CalEvent.js'
 
 export default class Julian extends CalEvent {

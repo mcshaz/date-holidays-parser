@@ -1,4 +1,4 @@
-import { toNumber } from './internal/utils.js'
+import { toNumber } from 'caldate'
 
 /**
  * Holiday Rule

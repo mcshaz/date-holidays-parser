@@ -3,9 +3,9 @@
  * @license ISC
  */
 
-import CalDate from 'caldate'
+import { CalDate, toYear } from 'caldate'
 import _ from './utils.js'
-import { toYear, toDate } from './internal/utils.js'
+import { toDate } from './internal/utils.js'
 import Data from './Data.js'
 import DateFn from './DateFn.js'
 import { HolidayRule } from './HolidayRule.js'

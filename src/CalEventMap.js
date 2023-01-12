@@ -1,5 +1,5 @@
 import CalEvent from './CalEvent.js'
-import CalDate from 'caldate'
+import { CalDate } from 'caldate'
 
 /**
  * Mapper class for mapped calenders like hijri and hebrew

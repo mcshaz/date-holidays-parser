@@ -1,4 +1,4 @@
-import CalDate from 'caldate'
+import { CalDate } from 'caldate'
 import CalEvent from './CalEvent.js'
 import jalaali from 'jalaali-js'
 

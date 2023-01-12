@@ -2,7 +2,7 @@
  * handle rule per event
  */
 
-import CalDate from 'caldate'
+import { CalDate } from 'caldate'
 import { DAYS, isNil } from './internal/utils.js'
 
 export default class Rule {

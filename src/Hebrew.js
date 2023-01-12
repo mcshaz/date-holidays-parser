@@ -1,4 +1,4 @@
-import CalDate from 'caldate'
+import { CalDate } from 'caldate'
 import CalEventMap from './CalEventMap.js'
 import { calendar } from './internal/hebrew-calendar.js'
 

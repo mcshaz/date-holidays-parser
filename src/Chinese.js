@@ -4,7 +4,7 @@ import {
   CalendarVietnamese
 } from 'date-chinese'
 import CalEvent from './CalEvent.js'
-import CalDate from 'caldate'
+import { CalDate } from 'caldate'
 
 export default class Chinese extends CalEvent {
   /**

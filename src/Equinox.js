@@ -1,8 +1,7 @@
 import { solstice, julian, planetposition } from 'astronomia'
 import { vsop87Bearth } from './vsop87Bearth.js'
-
-import moment from 'moment-timezone'
-import CalDate from 'caldate'
+import utcToZonedTime from 'date-fns-tz/utcToZonedTime'
+import { CalDate } from 'caldate'
 import CalEvent from './CalEvent.js'
 
 const earth = new planetposition.Planet(vsop87Bearth)
@@ -43,12 +42,7 @@ export default class Equinox extends CalEvent {
     }
 
     const str = new julian.Calendar().fromJDE(jde).toDate().toISOString()
-    let date
-    if (/^[+-]\d{2}:\d{2}?$/.test(this._timezone)) { // for '+08:00' formats
-      date = moment(str).utcOffset(this._timezone)
-    } else { // for 'Asia/Shanghai' formats
-      date = moment(str).tz(this._timezone) // move to timezone
-    }
+    const date = utcToZonedTime(str, this._timezone)
 
     const floorDate = {
       year,

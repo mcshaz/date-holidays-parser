@@ -1,5 +1,5 @@
-import moment from 'moment-timezone'
-import { pad0 } from '../src/internal/utils.js'
+import zonedTimeToUtc from 'date-fns-tz/zonedTimeToUtc'
+import { pad0 } from 'caldate'
 
 export function toIso (date) {
   const days = 'sun,mon,tue,wed,thu,fri,sat'.split(',')
@@ -38,7 +38,7 @@ export function moveToTimezone (date, timezone) {
   if (!timezone) {
     return date
   }
-  return new Date(moment.tz(toString(date), timezone).format())
+  return zonedTimeToUtc(toString(date), timezone)
 }
 
 export function localDate (str) {
