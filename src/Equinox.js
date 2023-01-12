@@ -46,8 +46,8 @@ export default class Equinox extends CalEvent {
 
     const floorDate = {
       year,
-      month: date.month() + 1,
-      day: date.date()
+      month: date.getMonth() + 1,
+      day: date.getDate()
     }
 
     const d = new CalDate(floorDate).setOffset(this.offset)

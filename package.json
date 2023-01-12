@@ -70,8 +70,7 @@
     "date-chinese": "^2.1.4",
     "date-easter": "^1.0.2",
     "deepmerge": "^4.2.2",
-    "jalaali-js": "^1.2.6",
-    "moment-timezone": "^0.5.39"
+    "jalaali-js": "^1.2.6"
   },
   "devDependencies": {
     "c8": "^7.12.0",
