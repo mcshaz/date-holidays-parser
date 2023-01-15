@@ -3,7 +3,7 @@
  * @license ISC
  */
 
-import { CalDate, toYear } from 'caldate'
+import { CalDate } from 'caldate'
 import _ from './utils.js'
 import { toDate } from './internal/utils.js'
 import Data from './Data.js'
@@ -150,7 +150,7 @@ export class Holidays {
    * ```
    */
   getHolidays (year, language) {
-    year = toYear(year)
+    year = CalDate.toYear(year)
 
     const langs = this.getLanguages()
     if (language) {

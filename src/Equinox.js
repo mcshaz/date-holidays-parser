@@ -1,7 +1,6 @@
 import { solstice, julian, planetposition } from 'astronomia'
 import { vsop87Bearth } from './vsop87Bearth.js'
-import utcToZonedTime from 'date-fns-tz/utcToZonedTime'
-import { CalDate } from 'caldate'
+import { CalDate, utcToZonedTime } from 'caldate'
 import CalEvent from './CalEvent.js'
 
 const earth = new planetposition.Planet(vsop87Bearth)

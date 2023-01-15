@@ -1,5 +1,4 @@
-import zonedTimeToUtc from 'date-fns-tz/zonedTimeToUtc'
-import { pad0 } from 'caldate'
+import { zonedTimeToUtc, pad0 } from 'caldate'
 
 export function toIso (date) {
   const days = 'sun,mon,tue,wed,thu,fri,sat'.split(',')

@@ -1,5 +1,3 @@
-// import 'core-js/es6/index.js' // for IE11
-
 import assert from 'assert'
 import Holidays, { HolidayRule } from '../src/index.js'
 import { toIso, localDate, moveToTimezone } from './helpers.js'

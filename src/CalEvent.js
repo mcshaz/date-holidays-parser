@@ -28,7 +28,7 @@ export default class CalEvent {
    */
   inYear (year) {
     const d = (new CalDate(this.opts)).setOffset(this.offset)
-    if (!(d.year && d.year !== year)) {
+    if (!d.year || d.year === year) {
       d.year = year
       this.dates.push(d)
     }
