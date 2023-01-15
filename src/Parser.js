@@ -3,7 +3,7 @@
    no-unexpected-multiline: 0
  */
 
-import { toNumber } from 'caldate'
+import { toInt } from 'caldate'
 
 const WEEKDAYS = 'Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday'.split('|')
 
@@ -265,9 +265,9 @@ export default class Parser {
       cap.shift()
       const res = {
         fn: 'gregorian',
-        year: toNumber(cap.shift()),
-        month: toNumber(cap.shift()),
-        day: toNumber(cap.shift())
+        year: toInt(cap.shift()),
+        month: toInt(cap.shift()),
+        day: toInt(cap.shift())
       }
       this.tokens.push(res)
       return true
@@ -281,9 +281,9 @@ export default class Parser {
       cap.shift()
       const res = {
         fn: 'julian',
-        year: toNumber(cap.shift()),
-        month: toNumber(cap.shift()),
-        day: toNumber(cap.shift())
+        year: toInt(cap.shift()),
+        month: toInt(cap.shift()),
+        day: toInt(cap.shift())
       }
       this.tokens.push(res)
       return true
@@ -298,7 +298,7 @@ export default class Parser {
       const res = {
         fn: 'easter',
         type: cap.shift(),
-        offset: toNumber(cap.shift()) || 0
+        offset: toInt(cap.shift()) || 0
       }
       this.tokens.push(res)
       return true
@@ -328,9 +328,9 @@ export default class Parser {
       cap.shift()
       const res = {
         fn: 'hebrew',
-        day: toNumber(cap.shift()),
+        day: toInt(cap.shift()),
         month: grammar.hebrewMonths[cap.shift()],
-        year: toNumber(cap.shift())
+        year: toInt(cap.shift())
       }
       this.tokens.push(res)
       return true
@@ -344,9 +344,9 @@ export default class Parser {
       cap.shift()
       const res = {
         fn: 'islamic',
-        day: toNumber(cap.shift()),
+        day: toInt(cap.shift()),
         month: grammar.islamicMonths[cap.shift()],
-        year: toNumber(cap.shift())
+        year: toInt(cap.shift())
       }
       this.tokens.push(res)
       return true
@@ -360,9 +360,9 @@ export default class Parser {
       cap.shift()
       const res = {
         fn: 'jalaali',
-        day: toNumber(cap.shift()),
+        day: toInt(cap.shift()),
         month: grammar.jalaaliMonths[cap.shift()],
-        year: toNumber(cap.shift())
+        year: toInt(cap.shift())
       }
       this.tokens.push(res)
       return true
@@ -376,10 +376,10 @@ export default class Parser {
       cap.shift()
       const res = {
         fn: cap.shift(),
-        cycle: toNumber(cap.shift()),
-        year: toNumber(cap.shift()),
-        solarterm: toNumber(cap.shift()),
-        day: toNumber(cap.shift()),
+        cycle: toInt(cap.shift()),
+        year: toInt(cap.shift()),
+        solarterm: toInt(cap.shift()),
+        day: toInt(cap.shift()),
         timezone: cap.shift()
       }
       this.tokens.push(res)
@@ -394,11 +394,11 @@ export default class Parser {
       cap.shift()
       const res = {
         fn: cap.shift(),
-        cycle: toNumber(cap.shift()),
-        year: toNumber(cap.shift()),
-        month: toNumber(cap.shift()),
-        leapMonth: !!toNumber(cap.shift()),
-        day: toNumber(cap.shift()),
+        cycle: toInt(cap.shift()),
+        year: toInt(cap.shift()),
+        month: toInt(cap.shift()),
+        leapMonth: !!toInt(cap.shift()),
+        day: toInt(cap.shift()),
         timezone: cap.shift()
       }
       this.tokens.push(res)
@@ -413,9 +413,9 @@ export default class Parser {
       cap.shift()
       const res = {
         fn: cap.shift(),
-        year: toNumber(cap.shift()),
-        month: toNumber(cap.shift()),
-        day: toNumber(cap.shift())
+        year: toInt(cap.shift()),
+        month: toInt(cap.shift()),
+        day: toInt(cap.shift())
       }
       this.tokens.push(res)
       return true
@@ -474,10 +474,10 @@ export default class Parser {
       cap.shift()
       const res = {
         rule: 'time',
-        hour: toNumber(cap.shift()) || 0,
-        minute: toNumber(cap.shift()) || 0
+        hour: toInt(cap.shift()) || 0,
+        minute: toInt(cap.shift()) || 0
       }
-      res.hour = res.hour || toNumber(cap.shift()) || 0
+      res.hour = res.hour || toInt(cap.shift()) || 0
       this.tokens.push(res)
       return true
     }
@@ -489,9 +489,9 @@ export default class Parser {
       this._shorten(o, cap[0])
       cap.shift()
       const tmp = {
-        days: toNumber(cap.shift()) || 0,
-        hours: toNumber(cap.shift()) || 0,
-        minutes: toNumber(cap.shift()) || 0
+        days: toInt(cap.shift()) || 0,
+        hours: toInt(cap.shift()) || 0,
+        minutes: toInt(cap.shift()) || 0
       }
       const res = {
         rule: 'duration',
@@ -548,7 +548,7 @@ export default class Parser {
       cap.shift()
       const res = {
         rule: 'dateDir',
-        count: toNumber(cap.shift()) || 1,
+        count: toInt(cap.shift()) || 1,
         weekday: lowerCaseWeekday(cap.shift()),
         direction: cap.shift()
       }
@@ -568,8 +568,8 @@ export default class Parser {
       const res = {
         rule: 'year',
         cardinality: cap.shift(),
-        every: toNumber(cap.shift()),
-        since: toNumber(cap.shift())
+        every: toInt(cap.shift()),
+        since: toInt(cap.shift())
       }
       this.tokens.push(res)
       return true
@@ -584,7 +584,7 @@ export default class Parser {
       const res = {
         rule: 'ruleIfHoliday',
         type: cap.shift(),
-        count: toNumber(cap.shift()) || 1,
+        count: toInt(cap.shift()) || 1,
         direction: cap.shift(),
         weekday: lowerCaseWeekday(cap.shift()),
         omit: (cap.shift() || '').split(/(?:,\s?)/).map(lowerCaseWeekdayWithoutDay).filter(Boolean)
@@ -615,9 +615,9 @@ export default class Parser {
       cap.shift()
       const res = {
         rule: 'activeFrom',
-        year: toNumber(cap.shift()),
-        month: toNumber(cap.shift()) || 1,
-        day: toNumber(cap.shift()) || 1
+        year: toInt(cap.shift()),
+        month: toInt(cap.shift()) || 1,
+        day: toInt(cap.shift()) || 1
       }
       this.tokens.push(res)
       return true
@@ -631,9 +631,9 @@ export default class Parser {
       cap.shift()
       const res = {
         rule: 'activeTo',
-        year: toNumber(cap.shift()),
-        month: toNumber(cap.shift()) || 1,
-        day: toNumber(cap.shift()) || 1
+        year: toInt(cap.shift()),
+        month: toInt(cap.shift()) || 1,
+        day: toInt(cap.shift()) || 1
       }
       this.tokens.push(res)
       return true

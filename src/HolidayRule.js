@@ -1,4 +1,4 @@
-import { toNumber } from 'caldate'
+import { toInt, pad0 } from 'caldate'
 
 /**
  * Holiday Rule
@@ -23,10 +23,10 @@ export class HolidayRule {
    * @param {number} [month] - 1..12
    */
   disableIn (year, month) {
-    if (!toNumber(year)) return
-    month = month < 1 && month > 12
-      ? undefined
-      : month < 10 ? '0' + Number(month) : month
+    if (!toInt(year)) return
+    month = month >= 1 && month <= 12
+      ? pad0(month)
+      : undefined
     const dateStr = [year, month].filter(Boolean).join('-')
     this.disable = (this.disable || []).concat(dateStr).sort()
   }

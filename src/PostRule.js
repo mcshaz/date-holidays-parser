@@ -1,5 +1,6 @@
 
-import { get as _get, toNumber } from './utils.js'
+import { get as _get } from './utils.js'
+import { toInt } from 'caldate'
 import Rule from './Rule.js'
 import CalEvent from './CalEvent.js'
 
@@ -122,7 +123,7 @@ export default class PostRule {
   }
 }
 
-const isoDate = (isoDateStr) => String(isoDateStr).split('-').map(v => toNumber(v))
+const isoDate = (isoDateStr) => String(isoDateStr).split('-').map(v => toInt(v))
 
 function _findEventInYear (_year, arr = []) {
   for (const item of arr) {

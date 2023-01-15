@@ -1,4 +1,4 @@
-import { CalDate, isDate } from 'caldate'
+import { CalDate } from 'caldate'
 
 export default class CalEvent {
   /**
@@ -17,7 +17,7 @@ export default class CalEvent {
     this.offset = opts.offset
     this.dates = []
     this.active = undefined // active props from prior to rule
-    if (isDate(opts)) {
+    if (opts instanceof Date) {
       this.opts = new CalDate(opts)
     }
   }
